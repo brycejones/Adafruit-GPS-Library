@@ -18,6 +18,17 @@ All text above must be included in any redistribution
 ****************************************/
 // Fllybob added lines 34,35 and 40,41 to add 100mHz logging capability 
 
+/**********************************
+Modified by Bryce Jones to include ability to query and report
+on antenna status per GlobalTop's FGPMMOPA6H Data Sheet Rev: V0A
+using their defined Antenna Status Protocol (Antenna Advisor.)
+
+REVISONS:
+2014-10-21 modified by brycej to include Antenna Status Protocol support [$PGTOP]
+*************************************/
+
+
+
 #ifndef _ADAFRUIT_GPS_H
 #define _ADAFRUIT_GPS_H
 
@@ -81,6 +92,15 @@ All text above must be included in any redistribution
 #define PGCMD_ANTENNA "$PGCMD,33,1*6C" 
 #define PGCMD_NOANTENNA "$PGCMD,33,0*6D" 
 
+
+
+// Modified by brycej to read antenna status ($PGTOP) per datasheet:
+#define PGTOP_ACTIVEANTENNA "$PGTOP,11,3,*6F"    // Using Active Antenna
+#define PGTOP_ANTENNA "$PGTOP,11,2*6E"           // Using internal Antenna
+#define PGTOP_SHORTANTENNA "$PGTOP,11,2*6D"      // Active Antenna Shorted!! 
+// *************************************************************
+
+
 // how long to wait when we're looking for a response
 #define MAXWAITSENTENCE 5
 
@@ -139,6 +159,7 @@ class Adafruit_GPS {
   char lat, lon, mag;
   boolean fix;
   uint8_t fixquality, satellites;
+  uint8_t antennastatus;            //added for parsing antenna status -brycej
 
   boolean waitForSentence(char *wait, uint8_t max = MAXWAITSENTENCE);
   boolean LOCUS_StartLogger(void);
