@@ -1,3 +1,11 @@
+
+***
+Fork implementing ability to query and report on antenna status 
+per GlobalTop's FGPMMOPA6H Data Sheet Rev: V0A employing the
+use of their defined Antenna Status Protocol (Antenna Advisor
+Protocol support [$PGTOP]  brycej
+***
+
 This is the Adafruit GPS library - the ultimate GPS library
 for the ultimate GPS module!
 
