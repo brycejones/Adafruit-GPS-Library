@@ -51,6 +51,22 @@ boolean Adafruit_GPS::parse(char *nmea) {
   long minutes;
   char degreebuff[10];
   // look for a few common sentences
+  
+
+  // Is the sentence found $PGTOP?, If yes, then parse for antenna status:
+  // Format= $PGTOP,11,3*6F note: added by brycej 10/20/2014
+
+  if (strstr(nmea, "$PGTOP")) {
+    // found PGTOP
+    char *p = nmea;
+    // get antenna status
+    p = strchr(p, ',')+1;
+    p = strchr(p, ',')+1;   //antenna status field
+    antennastatus = atoi(p);
+    }
+
+  
+  
   if (strstr(nmea, "$GPGGA")) {
     // found GGA
     char *p = nmea;
