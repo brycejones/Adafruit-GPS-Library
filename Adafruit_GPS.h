@@ -19,12 +19,9 @@ All text above must be included in any redistribution
 // Fllybob added lines 34,35 and 40,41 to add 100mHz logging capability 
 
 /**********************************
-Modified by Bryce Jones to include ability to query and report
+Bryce Jones/brycej added ability to query and report
 on antenna status per GlobalTop's FGPMMOPA6H Data Sheet Rev: V0A
-using their defined Antenna Status Protocol (Antenna Advisor.)
-
-REVISONS:
-2014-10-21 modified by brycej to include Antenna Status Protocol support [$PGTOP]
+using their Antenna Status Protocol (Antenna Advisor.)
 *************************************/
 
 
@@ -92,9 +89,7 @@ REVISONS:
 #define PGCMD_ANTENNA "$PGCMD,33,1*6C" 
 #define PGCMD_NOANTENNA "$PGCMD,33,0*6D" 
 
-
-
-// Modified by brycej to read antenna status ($PGTOP) per datasheet:
+// read antenna adviser ($PGTOP) per datasheet:
 #define PGTOP_ACTIVEANTENNA "$PGTOP,11,3,*6F"    // Using Active Antenna
 #define PGTOP_ANTENNA "$PGTOP,11,2*6E"           // Using internal Antenna
 #define PGTOP_SHORTANTENNA "$PGTOP,11,2*6D"      // Active Antenna Shorted!! 
